@@ -6,6 +6,19 @@
     <title>Energy Tracker</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/@saeris/typeface-beleren-bold@latest/index.css" rel="stylesheet" type="text/css" />
+    <style>
+        #broken-image {
+            display: none; /* Hidden by default */
+            position: fixed; /* Ensure it's positioned on top */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Cover the whole screen */
+            z-index: 1000; /* Ensure it appears above other elements */
+            opacity: 0.97; /* Adjust opacity to make the image semi-transparent */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,6 +33,7 @@
         <input type="number" id="spendAmount" placeholder="Spend your energy" />
         <button id="spendButton">SPEND</button>
     </footer>
+    <img id="broken-image" src="./image1.jpg" alt="Broken Image">
     <script src="script.js"></script>
 </body>
 </html>

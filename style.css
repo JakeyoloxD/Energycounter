@@ -1,17 +1,19 @@
 /* Apply a background image with gradient overlay */
 body {
-    background-image: url('image2.jpg'); 
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Beleren SmallCaps Bold', sans-serif;
-    color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('./image2.jpg'); 
+    background-size: cover; /* Ensures the background covers the element */
+    background-position: center top; /* Adjust to ensure Kenrith and name are visible */
+    background-repeat: no-repeat; /* Prevents image repetition */
+    background-attachment: fixed; /* Fixed background */
+    overflow: hidden; /* Prevent body scrolling */
+    color: white; /* Ensures text is readable against background */
 }
 header {
     position: fixed;
@@ -124,3 +126,13 @@ footer button:active {
     background-color: #FF5722; /* Darker orange when pressed */
 }
 
+#broken-image {
+    display: none; /* Hidden by default */
+    position: fixed; /* Ensure it's positioned on top */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    object-fit: cover; /* Cover the whole screen */
+    z-index: 1000; /* Ensure it appears above other elements */
+}

@@ -174,9 +174,19 @@ function handleSpend() {
     if (count >= spendAmount) {
         count -= spendAmount;
         updateDisplay();
+
         // Play a sound (requires user interaction to work in many browsers)
         const audio = new Audio('bzzz.mp3');
         audio.play();
+
+        const image = document.getElementById("broken-image");
+        image.style.display = "block"; // Show the image
+
+        // Hide the image after 7 seconds
+        setTimeout(() => {
+            image.style.display = "none";
+        }, 5000);
+
         // Vibrate the device (only works on mobile devices)
         if (navigator.vibrate) {
             navigator.vibrate(100);
@@ -185,7 +195,7 @@ function handleSpend() {
         // Show warning if not enough energy
         alert('NOT ENOUGH ENERGY');
     }
-}
+}  
 
 document.getElementById('spendButton').addEventListener('click', handleSpend);
 
