@@ -1,6 +1,6 @@
 /* Apply a background image with gradient overlay */
 body {
-    background-image: url('../image2.jpg'); 
+    background-image: url('image2.jpg'); 
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -101,7 +101,7 @@ footer input {
     font-family: 'Beleren SmallCaps Bold', sans-serif;
     border-radius: 5px;
     border: none;
-    width: 190px; /* Adjust width as needed */
+    width: 200px; /* Adjust width as needed */
     margin-right: 10px;
 }
 
