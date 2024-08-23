@@ -230,6 +230,11 @@ function handleSpend() {
 
 document.getElementById('spendButton').addEventListener('click', handleSpend);
 
+// Ensure the input field is visible when the keyboard opens
+document.getElementById('spendAmount').addEventListener('focus', function() {
+    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
 // Filter input to disallow negative values
 document.getElementById('spendAmount').addEventListener('input', function(e) {
     const value = e.target.value;
