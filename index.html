@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/@saeris/typeface-beleren-bold@latest/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <h1 id="encounter" onclick="toggleFullscreen()">Energy Counter</h1>
+    </header>
+    <div class="container">
+        <div id="energy" class="counter">0</div>
+        <button id="decrease">Decrease</button>
+        <button id="increase">Increase</button>
+    </div>
+    <footer>
+        <input type="number" id="spendAmount" placeholder="Spend your energy" />
+        <button id="spendButton">SPEND</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
