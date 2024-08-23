@@ -58,6 +58,9 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    user-select: none; /* Prevent text selection */
+        -webkit-user-select: none; /* For Safari */
+        -ms-user-select: none; /* For IE/Edge */    
 }
 
 button:hover {

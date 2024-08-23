@@ -45,12 +45,29 @@ function playButtonSound() {
     let audio = new Audio('button.mp3');
     audio.play();
 }
-// Function to toggle fullscreen mode
 function toggleFullscreen() {
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
+    let doc = document.documentElement;
+
+    if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        if (doc.requestFullscreen) {
+            doc.requestFullscreen();
+        } else if (doc.mozRequestFullScreen) { // Firefox
+            doc.mozRequestFullScreen();
+        } else if (doc.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+            doc.webkitRequestFullscreen();
+        } else if (doc.msRequestFullscreen) { // IE/Edge
+            doc.msRequestFullscreen();
+        }
     } else {
-        document.documentElement.requestFullscreen();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari, and Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
     }
 }
 function startIncrement() {
@@ -168,10 +185,17 @@ function stopDecrement() {
 document.getElementById('increase').addEventListener('mousedown', startIncrement);
 document.getElementById('increase').addEventListener('mouseup', stopIncrement);
 document.getElementById('increase').addEventListener('mouseleave', stopIncrement);
+document.getElementById('increase').addEventListener('touchstart', startIncrement);
+document.getElementById('increase').addEventListener('touchend', stopIncrement);
 
 document.getElementById('decrease').addEventListener('mousedown', startDecrement);
 document.getElementById('decrease').addEventListener('mouseup', stopDecrement);
 document.getElementById('decrease').addEventListener('mouseleave', stopDecrement);
+document.getElementById('decrease').addEventListener('touchstart', startDecrement);
+document.getElementById('decrease').addEventListener('touchend', stopDecrement);
+
+
+
 
 function handleSpend() {
     const spendAmount = parseInt(document.getElementById('spendAmount').value, 10);
