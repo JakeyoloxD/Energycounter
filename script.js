@@ -45,7 +45,14 @@ function playButtonSound() {
     let audio = new Audio('button.mp3');
     audio.play();
 }
-
+// Function to toggle fullscreen mode
+function toggleFullscreen() {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else {
+        document.documentElement.requestFullscreen();
+    }
+}
 function startIncrement() {
     incrementTimeout = setTimeout(() => {
         incrementInterval = setInterval(() => {
