@@ -9,6 +9,7 @@ let aggressiveThreshold = 2000;
 let isAggressive = false;
 let step = 1;
 let stepIncreaseTimeout;
+let sound; // Audio object for looping sound
 
 function updateDisplay() {
     document.getElementById('energy').textContent = count;
@@ -31,11 +32,19 @@ function decrementCounter() {
 
 document.getElementById('increase').addEventListener('click', () => {
     incrementCounter();
+    playButtonSound();
 });
 
 document.getElementById('decrease').addEventListener('click', () => {
     decrementCounter();
+    playButtonSound();
 });
+
+// Function to play button sound
+function playButtonSound() {
+    let audio = new Audio('button.mp3');
+    audio.play();
+}
 
 function startIncrement() {
     incrementTimeout = setTimeout(() => {
@@ -63,15 +72,20 @@ function startIncrement() {
 
         stepIncreaseTimeout = setTimeout(() => {
             step = 10;
-        }, 5000);
+        }, 20000);
 
         stepIncreaseTimeout = setTimeout(() => {
             step = 100;
-        }, 10000);
+        }, 60000);
 
         stepIncreaseTimeout = setTimeout(() => {
             step = 1000;
-        }, 15000);
+        }, 120000);
+        
+        // Play looping sound
+        sound = new Audio('loop.mp3'); // Ensure 'loop.mp3' is a valid path
+        sound.loop = true;
+        sound.play();
 
     }, holdDuration);
 }
@@ -108,6 +122,11 @@ function startDecrement() {
             step = 1000;
         }, 30000);
 
+        // Play looping sound
+        sound = new Audio('loop.mp3'); // Ensure 'loop.mp3' is a valid path
+        sound.loop = true;
+        sound.play();
+
     }, holdDuration);
 }
 
@@ -118,6 +137,11 @@ function stopIncrement() {
     speed = 150;
     step = 1;
     isAggressive = false;
+    // Stop the sound
+    if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
 }
 
 function stopDecrement() {
@@ -127,6 +151,11 @@ function stopDecrement() {
     speed = 150;
     step = 1;
     isAggressive = false;
+    // Stop the sound
+    if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
 }
 
 document.getElementById('increase').addEventListener('mousedown', startIncrement);
@@ -140,14 +169,13 @@ document.getElementById('decrease').addEventListener('mouseleave', stopDecrement
 function handleSpend() {
     const spendAmount = parseInt(document.getElementById('spendAmount').value, 10);
     if (isNaN(spendAmount) || spendAmount <= 0) {
-        // Do nothing if the input is empty or negative
-        return;
+        return; // Do nothing if the input is empty or not a positive number
     }
     if (count >= spendAmount) {
         count -= spendAmount;
         updateDisplay();
         // Play a sound (requires user interaction to work in many browsers)
-        const audio = new Audio('../bzzz.mp3');
+        const audio = new Audio('bzzz.mp3');
         audio.play();
         // Vibrate the device (only works on mobile devices)
         if (navigator.vibrate) {
@@ -159,6 +187,8 @@ function handleSpend() {
     }
 }
 
+document.getElementById('spendButton').addEventListener('click', handleSpend);
+
 // Filter input to disallow negative values
 document.getElementById('spendAmount').addEventListener('input', function(e) {
     const value = e.target.value;
@@ -166,26 +196,5 @@ document.getElementById('spendAmount').addEventListener('input', function(e) {
         e.target.value = 0; // Set to 0 if negative value is entered
     }
 });
-
-// Handle spend button click
-function handleSpend() {
-    const spendAmount = parseInt(document.getElementById('spendAmount').value, 10);
-    if (isNaN(spendAmount) || spendAmount <= 0) {
-        return; // Do nothing if the input is empty or not a positive number
-    }
-    if (count >= spendAmount) {
-        count -= spendAmount;
-        updateDisplay();
-        const audio = new Audio('bzzz.mp3');
-        audio.play();
-        if (navigator.vibrate) {
-            navigator.vibrate(100);
-        }
-    } else {
-        alert('NOT ENOUGH ENERGY');
-    }
-}
-
-document.getElementById('spendButton').addEventListener('click', handleSpend);
 
 updateDisplay(); // Initialize display
