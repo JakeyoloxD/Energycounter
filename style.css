@@ -1,6 +1,6 @@
 /* Apply a background image with gradient overlay */
 body {
-    background-image: url('image2.jpg'); 
+    background-image: url('../image2.jpg'); 
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
