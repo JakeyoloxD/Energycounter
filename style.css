@@ -87,8 +87,50 @@ button#decrease {
 button#decrease:hover {
     background-color: #EF5350;
 }
-/* Footer styling */
+/* New styles for spend container */
+.spend-container {
+    margin-top: 20px; /* Space between the counter/buttons and the spend section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spend-container input {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-family: 'Beleren SmallCaps Bold', sans-serif;
+    border-radius: 5px;
+    border: none;
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px;
+}
+
+.spend-container button {
+    background-color: #FF9800; /* Orange color for spending */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.spend-container button:hover {
+    background-color: #FFC107; /* Lighter orange on hover */
+}
+
+.spend-container button:active {
+    background-color: #FF5722; /* Darker orange when pressed */
+}
+
+/* Remove footer or hide it if not needed anymore */
 footer {
+    display: none;
+}
+
+/* Footer styling */
+/* footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -106,12 +148,12 @@ footer input {
     font-family: 'Beleren SmallCaps Bold', sans-serif;
     border-radius: 5px;
     border: none;
-    width: 200px; /* Adjust width as needed */
+    width: 200px; /* Adjust width as needed 
     margin-right: 10px;
-}
+} */
 
-footer button {
-    background-color: #FF9800; /* Orange color for spending */
+/* footer button {
+    background-color: #FF9800; /* Orange color for spending 
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -122,12 +164,12 @@ footer button {
 }
 
 footer button:hover {
-    background-color: #FFC107; /* Lighter orange on hover */
+    background-color: #FFC107; /* Lighter orange on hover
 }
 
 footer button:active {
-    background-color: #FF5722; /* Darker orange when pressed */
-}
+    background-color: #FF5722; /* Darker orange when pressed 
+} */
 
 #broken-image {
     display: none; /* Hidden by default */
